@@ -51,7 +51,7 @@ Jupyter notebook, linked below, that you can clone and run end-to-end.
 <div class="repositories d-flex flex-wrap flex-md-row flex-column
             justify-content-between align-items-center">
   {% include repository/repo.liquid
-     repository="shailzajolly/attention-notebook" %}
+     repository="shailzajolly/Website_assets/blob/main/attention.ipynb" %}
 </div>
 {% endif %}
 
