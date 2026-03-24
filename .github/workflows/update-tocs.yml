@@ -34,9 +34,16 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/george-gca/github-markdown-toc/main/gh-md-toc -o gh-md-toc
           chmod a+x gh-md-toc
+          # Skip upstream template files that should not be auto-modified
+          EXCLUDED_FILES="CUSTOMIZE.md CONTRIBUTING.md FAQ.md INSTALL.md README.md"
           for file in ${ALL_CHANGED_FILES}; do
             # Check if the file is a markdown file
             if [[ "$file" != *.md ]]; then
+              continue
+            fi
+            # Skip excluded files
+            basename=$(basename "$file")
+            if echo "$EXCLUDED_FILES" | grep -qw "$basename"; then
               continue
             fi
             ./gh-md-toc --indent 2 --insert --no-backup --hide-footer $file
