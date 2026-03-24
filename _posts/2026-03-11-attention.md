@@ -15,12 +15,11 @@ citation: true
 related_publications: true
 ---
 
-
 Attention is a word interpreted quite differently across communities.
 For a toddler, it signals caution; for an athlete, it means posture
 and sharp focus. But in the ML community, the word immediately conjures
 Transformers {% cite vaswani2017attention --file references %}. What intrigues me is that
-the word's Latin root *attendere*, meaning *"to stretch toward"*
+the word's Latin root _attendere_, meaning _"to stretch toward"_
 maps almost perfectly onto what the mechanism does mathematically: it
 lets a model reach across a sequence and selectively pull in whatever
 is most relevant at each step. This blog traces how that idea was born,
@@ -33,23 +32,22 @@ you should have a complete mental model of attention from its origins
 in sequence-to-sequence translation all the way to the hardware-aware
 algorithms that power today's large language models.
 
-
 > **A note on why this blog matters now.**
 > Perplexity AI CEO Aravind Srinivas has [argued](https://www.firstpost.com/tech/perplexity-ceo-believes-ai-could-brings-computer-science-back-to-its-mathematical-roots-13989960.html) {% cite srinivas2024mathroots --file references %}
 > that AI is not making computer science obsolete. It is driving the
-> field *back* to its mathematical roots. As AI automates routine coding,
+> field _back_ to its mathematical roots. As AI automates routine coding,
 > competitive advantage shifts toward deep understanding of linear algebra,
 > calculus, and first-principles engineering. Every code cell in this blog
 > is therefore written in **plain PyTorch mathematics**. No high-level
 > attention libraries, no black-box wrappers because understanding the
-> fundamentals is what separates someone who can *use* these tools from
-> someone who can *improve* or *rethink* them.
+> fundamentals is what separates someone who can _use_ these tools from
+> someone who can _improve_ or _rethink_ them.
 
 Every section is paired with a code cell. All cells are part of a single
 Jupyter notebook, linked below, that you can clone and run end-to-end.
 
-
 {% if site.data.repositories.github_repos %}
+
 <div class="repositories d-flex flex-wrap flex-md-row flex-column
             justify-content-between align-items-center">
   {% include repository/repo.liquid
@@ -57,38 +55,30 @@ Jupyter notebook, linked below, that you can clone and run end-to-end.
 </div>
 {% endif %}
 
-
 ---
 
-
 ## Section 1 — The World Before Attention
-{: #section-1}
 
+{: #section-1}
 
 To understand why attention was needed, we first need to understand
 what researchers were working with before it and precisely where
 it broke.
 
-
 ### The Running Example
-
 
 Throughout this blog I will use a single sentence as a test bed:
 
+> _"The poet published many poems but is still grounded."_
 
-> *"The poet published many poems but is still grounded."*
-
-
-This sentence is deliberately tricky. The verb *is* must agree with
-*poet* (singular), not with *poems* (plural), even though *poems* is
+This sentence is deliberately tricky. The verb _is_ must agree with
+_poet_ (singular), not with _poems_ (plural), even though _poems_ is
 the nearer noun. A model must track **syntactic recency** which is the true
 grammatical subject and resist **sequential recency**, the temptation
 to agree with the most recently seen noun. Getting this right across a
 long sequence is exactly what pre-attention architectures struggled with.
 
-
 ### Seq2Seq: The Bottleneck
-
 
 The dominant approach for sequence tasks before attention was the
 **sequence-to-sequence (seq2seq)** encoder–decoder architecture
@@ -99,7 +89,7 @@ After the final token, the **last hidden state** $$\mathbf{h}_n$$ is
 handed to the decoder as its initial state, and the decoder generates
 the output sequence one token at a time.
 
-This single vector must compress the *entire meaning* of the input
+This single vector must compress the _entire meaning_ of the input
 sequence. For short sentences this works adequately. For longer ones,
 it becomes a critical bottleneck: information from early tokens is
 progressively overwritten as later tokens are processed
@@ -116,11 +106,10 @@ mitigate this with gating mechanisms but do not eliminate the fundamental
 bottleneck: the decoder still receives only $$\mathbf{h}_n$$, regardless
 of how much useful information sits in the intermediate encoder states.
 
-
 ### Code — Cell 1: The Bottleneck
 
-
 > ##### Design philosophy — why no LSTM here?
+>
 > A framework LSTM is a helpful engineering tool, but its internal gates,
 > weight initialisations, and optimiser state obscure the core idea we
 > are trying to illustrate. Instead, the setup below builds the encoder with
@@ -135,13 +124,11 @@ of how much useful information sits in the intermediate encoder states.
 >    signal on the first dimension. `poems` receives `[0.2, 0, 0, 0, 0, 0]`,
 >    a weaker distractor on the same axis. This makes the expected
 >    behaviour of attention legible before we even run it.
->
 > 2. **Noise scaled to 0.05.**
 >    All other words are initialised with `torch.randn(d_model) * 0.05`.
 >    Multiplying by 0.05 keeps distractor values very small, so signal
 >    dominates over noise and the demo remains numerically stable across
 >    random seeds.
->
 > 3. **`torch.eye` as the encoder transformation.**
 >    The encoder applies `W_enc = torch.eye(d_model)`, an identity matrix,
 >    followed by `tanh`. This preserves every embedding dimension without
@@ -151,7 +138,6 @@ of how much useful information sits in the intermediate encoder states.
 >    weight matrix. In a real trained model `W_enc` would be learned; here
 >    we keep it transparent so attention's behaviour is fully attributable
 >    to the embeddings.
-
 
 ```python
 # ── Cell 1: shared setup — run once, all later cells reuse these ──────────────
@@ -227,7 +213,7 @@ The decoder receives 6 numbers to represent
 a 9-token sentence. All other encoder states are DISCARDED.
 ```
 
-**What to observe.** The vector `h_n` corresponds to *"grounded"* i.e., the final
+**What to observe.** The vector `h_n` corresponds to _"grounded"_ i.e., the final
 token. Its first dimension is `0.026`, far from the `1.0` that `poet` had nine
 steps earlier. The bottleneck is not a theoretical concern; it is visible
 directly in these six numbers.
@@ -237,10 +223,11 @@ directly in these six numbers.
 > **Researcher's question:** Every intermediate encoder hidden state is
 > discarded after the final encoding step. But those states capture
 > position-specific context that $$\mathbf{h}_n$$ has already partially
-> forgotten. What if the decoder could query *all* of them and decide
+> forgotten. What if the decoder could query _all_ of them and decide
 > which ones matter at each output step?
 
 ## Section 2 — Attention as the Solution
+
 {: #section-2}
 
 The question above contains two observations that, when combined, produce
@@ -253,7 +240,7 @@ direction and small (or negative) when they diverge. This gives us a cheap,
 differentiable measure of alignment between any pair of vectors.
 
 **Observation 2: We already have all the encoder states.**
-The bottleneck is a *choice*, not a necessity. An RNN encoder computes a
+The bottleneck is a _choice_, not a necessity. An RNN encoder computes a
 hidden state at every time step; only the last one is traditionally passed
 to the decoder. The others sit unused in memory.
 
@@ -264,7 +251,7 @@ proportional to those scores?
 
 That is exactly dot-product attention {% cite bahdanau2015attention --file references %}.
 Instead of receiving a single bottleneck vector, the decoder now receives a
-**context vector** $$\mathbf{c}$$ that is a soft mixture of *all* encoder
+**context vector** $$\mathbf{c}$$ that is a soft mixture of _all_ encoder
 states, weighted by relevance:
 
 $$
@@ -279,9 +266,7 @@ Crucially, these weights are **recomputed at every decoder step**. The
 decoder can attend to entirely different parts of the source at each output
 token. The bottleneck is gone.
 
-
 ### Code — Cell 2: Dot-Product Attention
-
 
 ```python
 # ── Cell 2: dot-product attention — continues from Cell 1 ─────────────────────
@@ -339,7 +324,6 @@ dimension but at a weaker magnitude (`0.2`). All other tokens score near the
 uniform baseline. Without any learned parameters, the dot product already
 recovers the correct grammatical subject.
 
-
 ### Bahdanau's Additive Attention: A Nonlinear Scoring Function
 
 The original attention paper {% cite bahdanau2015attention --file references %} did not use
@@ -353,7 +337,7 @@ $$
 
 The intuition is that a nonlinear scoring function can capture asymmetric
 relationships that a dot product misses. If $$\mathbf{h}_\text{dec}$$ needs
-to be *similar to but not identical to* $$\mathbf{h}_i^\text{enc}$$ in a
+to be _similar to but not identical to_ $$\mathbf{h}_i^\text{enc}$$ in a
 way that depends on their sum, tanh can express that while a dot product
 cannot.
 
@@ -362,13 +346,13 @@ this reduces to `tanh(query + key).sum()` for each key — enough to
 illustrate the structural difference.
 
 > ##### Additive vs. multiplicative scoring
+>
 > Additive attention is more expressive (a nonlinear score) but requires a
 > forward pass through a scoring network for every (query, key) pair.
 > Dot-product attention maps directly to a matrix multiply, making it
 > dramatically more GPU-efficient. This is one reason the Transformer
 > chose multiplicative attention — with a scaling fix to handle large
 > dimensions, described next.
-
 
 ```python
 # ── Cell 3: additive attention (Bahdanau 2015) ────────────────────────────────
@@ -420,6 +404,7 @@ distribution; here we see the baseline behavior of the scoring function alone.
 > the recurrence entirely and keep only the attention?
 
 ## Section 3 — Self-Attention and the Transformer
+
 {: #section-3}
 
 The insight that led to the Transformer {% cite vaswani2017attention --file references %} was
@@ -427,7 +412,7 @@ deceptively simple: **recurrence is not necessary**. If attention can replace
 the bottleneck vector, can it also replace the sequential encoder?
 
 In Bahdanau's setup, the query came from the decoder which is a hidden state
-*outside* the encoder's sequence. Self-attention takes the next logical step:
+_outside_ the encoder's sequence. Self-attention takes the next logical step:
 **every word in a sequence acts as both a query and a key-value pair for
 every other word in the same sequence**. There is no separate decoder; each
 token enriches itself by attending to the full context.
@@ -445,9 +430,8 @@ simultaneously:
 
 The sentence `"The poet published many poems but is still grounded"` now
 computes nine attention distributions simultaneously i.e., one per token, each
-reading the full context. *That* is how modern LLMs process hundreds of
+reading the full context. _That_ is how modern LLMs process hundreds of
 thousands of tokens in parallel.
-
 
 ### Scaled Dot-Product Attention
 
@@ -471,7 +455,6 @@ $$
 Division by $$\sqrt{d_k}$$ keeps the variance of dot products at 1
 regardless of dimension, which keeps softmax in a well-behaved gradient
 region throughout training.
-
 
 ```python
 # ── Cell 3b: scaled dot-product attention ─────────────────────────────────────
@@ -512,17 +495,19 @@ scaling. In a high-dimensional setting ($$d_k = 512$$ or $$1024$$), this
 difference is decisive: unscaled attention produces near-one-hot distributions
 that give essentially zero gradient signal.
 
-
 ### Code — Cell 4: Self-Attention (Full Matrix)
 
 > ##### A note on projection matrices
-> In a real Transformer, queries, keys, and values are *projected* into
+>
+> In a real Transformer, queries, keys, and values are _projected_ into
 > separate learned subspaces via parameter matrices
 > $$\mathbf{W}_Q, \mathbf{W}_K, \mathbf{W}_V$$:
 >
-> $$\mathbf{Q} = \mathbf{X}\mathbf{W}_Q, \quad
+> $$
+> \mathbf{Q} = \mathbf{X}\mathbf{W}_Q, \quad
 >   \mathbf{K} = \mathbf{X}\mathbf{W}_K, \quad
->   \mathbf{V} = \mathbf{X}\mathbf{W}_V$$
+>   \mathbf{V} = \mathbf{X}\mathbf{W}_V
+> $$
 >
 > These matrices are initialised randomly and updated by gradient descent.
 > Over training, $$\mathbf{W}_Q$$ and $$\mathbf{W}_K$$ learn to project
@@ -530,7 +515,6 @@ that give essentially zero gradient signal.
 > extracts information most useful downstream. Here we set all three to
 > `encoder_outputs` directly (identity projections) so the attention
 > behaviour is attributable entirely to the hand-crafted embeddings.
-
 
 ```python
 # ── Cell 4: self-attention — all tokens attend to all tokens ──────────────────
@@ -574,23 +558,22 @@ Where 'is' attends (sorted):
 
 The `attn_matrix` is a $$9 \times 9$$ matrix: every row is a probability
 distribution over all nine tokens. Row 6 (`is`) shows the familiar
-`poet`dominant pattern. But now *every* row is computed simultaneously i.e.,
+`poet`dominant pattern. But now _every_ row is computed simultaneously i.e.,
 all nine token representations are enriched in a single parallel pass.
 That is the computational breakthrough that makes Transformers scalable.
-
 
 ### Multi-Head Attention
 
 One head of self-attention asks a single question: "given the full context,
 what is most relevant for each position?" But natural language requires
-*many* types of relevance simultaneously. A single head cannot learn a
+_many_ types of relevance simultaneously. A single head cannot learn a
 subject-verb dependency in the same subspace as a pronoun-referent
 dependency or a semantic paraphrase relationship. These correspond to
 different geometric structures in the representation space.
 
 Multi-head attention {% cite vaswani2017attention --file references %} runs $$h$$
-independent attention functions in parallel on *different projected
-subspaces* of the input, then concatenates the results:
+independent attention functions in parallel on _different projected
+subspaces_ of the input, then concatenates the results:
 
 $$
 \text{MultiHead}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) =
@@ -606,7 +589,6 @@ learns syntactic dependencies (subject-verb), another semantic similarity,
 a third long-range co-reference. In our running example, the six embedding
 dimensions are split across two heads of three dimensions each. Think of
 it as assigning separate analysts to separate aspects of the problem.
-
 
 ```python
 # ── Cell 5: multi-head attention (conceptual split) ───────────────────────────
@@ -662,7 +644,7 @@ dims 0–2. Head 1 produces a perfectly uniform distribution. dims 3–5 are
 near-zero noise for all tokens, so all keys look the same from Head 1's
 perspective. In a trained model, learned projection matrices
 $$\mathbf{W}_{Q_1}, \mathbf{W}_{K_1}$$ would rotate Head 1 into a subspace
-where a *different* linguistic property dominates. The uniform output here
+where a _different_ linguistic property dominates. The uniform output here
 is a property of our toy embeddings, not a flaw in the mechanism.
 
 The key takeaway: multi-head attention does not increase per-head complexity,
@@ -674,17 +656,17 @@ generalist models rather than task-specific ones.
 
 > **Researcher's question:** We now have an $$O(n^2)$$ computation. For
 > $$n = 10{,}000$$ tokens, the attention matrix has $$10^8$$ entries.
-> Storing this at FP32 requires 400 MB *per layer*. With 96 layers and
+> Storing this at FP32 requires 400 MB _per layer_. With 96 layers and
 > large batches, we are talking about terabytes. Is the bottleneck now
 > memory rather than expressiveness?
 
 ## Section 4 — FlashAttention: Attention Meets Hardware
+
 {: #section-4}
 
 By 2022, the Transformer had become the dominant architecture across language,
 vision, and speech. But scaling it to longer contexts was hitting a wall. It was
 not a mathematical one, but a hardware one.
-
 
 ### The Memory Wall
 
@@ -706,7 +688,6 @@ Dao et al. {% cite dao2022flashattention --file references %} made a critical ob
 final output, which is a weighted sum of values. The full matrix is written to
 HBM and then immediately read back which is an enormous round-trip that achieves
 nothing except satisfying the sequential structure of the naive algorithm.
-
 
 ### Tiling and the Online Softmax Trick
 
@@ -733,7 +714,6 @@ The result: FlashAttention computes **exact** attention (no approximation,
 no quality loss) with $$O(n)$$ HBM reads instead of $$O(n^2)$$. In practice
 this yields 2–4× wall-clock speedups and reduces memory from quadratic to
 linear in sequence length {% cite dao2022flashattention --file references %}.
-
 
 ```python
 # ── Cell 6: Flash Attention (block-wise tiled computation) ────────────────────
@@ -790,8 +770,9 @@ tensor([ 0.2277,  0.0004, -0.0246,  0.0077, -0.0187, -0.0030])
 ```
 
 > ##### Verifying correctness
+>
 > You can verify this matches the standard scaled dot-product result by
-> running both cells on the same inputs. FlashAttention is *exact*. The
+> running both cells on the same inputs. FlashAttention is _exact_. The
 > tiling is a scheduling optimisation, not an approximation. The strong
 > first dimension (`0.2277`) reflects the dominance of `poet`
 > (embedding `[1, 0, ...]`) in the weighted sum, as expected.
@@ -807,8 +788,8 @@ multiply, pushing throughput toward the theoretical hardware limit.
 
 ---
 
-
 ## Section 5 — From Theory to Production: Batches, Masking, and Training
+
 {: #section-5}
 
 Every code cell above processes a single sentence of nine tokens with
@@ -817,7 +798,6 @@ of sequences simultaneously, handle variable-length inputs, enforce causal
 visibility constraints, and manage learned parameters that evolve over
 billions of gradient steps. This section maps the single-example mechanics
 to the production setting.
-
 
 ### 5.1 — Batching
 
@@ -868,7 +848,6 @@ attn_weights = F.softmax(scores, dim=-1)   # [B, T, T]
 output = attn_weights @ V                  # [B, T, d_model]
 ```
 
-
 ### 5.2 — Causal Masking (Autoregressive Generation)
 
 Language models generate text left to right: when predicting token $$t$$,
@@ -899,7 +878,6 @@ causal_mask = torch.triu(torch.ones(T, T), diagonal=1).bool()
 # shape: [T, T], upper triangle = True
 ```
 
-
 ### 5.3 — Learned Projection Matrices
 
 Throughout the earlier sections, we set $$\mathbf{Q} = \mathbf{K} = \mathbf{V}
@@ -921,7 +899,6 @@ the features most useful for the downstream task. The identity projections in
 our demo are the special case where training would happen to converge to the
 identity which is a simplification that makes the effect of embedding design
 directly observable, with no learned transformation in the way.
-
 
 ### 5.4 — KV Cache During Inference
 
@@ -946,7 +923,6 @@ the capacity of a single node. Managing this cache efficiently (paged
 allocation, prefix sharing, quantisation) is one of the primary engineering
 challenges in deploying large language models.
 
-
 ### 5.5 — Positional Encoding
 
 Self-attention is **permutation-equivariant**: swap the order of input tokens
@@ -959,8 +935,8 @@ The original Transformer used fixed sinusoidal functions. Modern large models
 typically use **Rotary Position Embeddings (RoPE)**, which apply
 position-dependent rotations directly to the query and key vectors before
 their dot product is computed. This has two practical advantages: it encodes
-*relative* position (how far apart are these two tokens?) rather than
-*absolute* position, and it generalises more gracefully to sequences longer
+_relative_ position (how far apart are these two tokens?) rather than
+_absolute_ position, and it generalises more gracefully to sequences longer
 than those seen during training. RoPE is the positional encoding used in
 LLaMA, Mistral, and most contemporary open-source models.
 
@@ -972,8 +948,8 @@ LLaMA, Mistral, and most contemporary open-source models.
 > tokens, a full novel, the attention computation alone would require
 > terabytes of compute. Are there fundamentally better alternatives?
 
-
 ## Section 6 — Is Attention Still Evolving?
+
 {: #section-6}
 
 The attention mechanism described in this blog has driven a decade of
@@ -981,13 +957,12 @@ progress in NLP, vision, and multimodal AI. Yet the boundaries of what is
 practical continue to shift, and researchers continue to push at those
 boundaries from multiple directions.
 
-
 ### 6.1 — The Quadratic Bottleneck
 
 Standard self-attention requires $$O(n^2)$$ time and memory in sequence
 length $$n$$. For $$n = 128{,}000$$ tokens (a common production context
 length in 2024–25), the raw attention matrix contains $$\sim 1.6 \times
-10^{10}$$ entries. FlashAttention eliminates the memory cost of *storing*
+10^{10}$$ entries. FlashAttention eliminates the memory cost of _storing_
 this matrix, but the compute cost remains quadratic.
 
 Two broad strategies have emerged to attack this:
@@ -1000,7 +975,7 @@ structured subset of other tokens. **Longformer**
 pattern (each token attends to a fixed window of neighbours) with global
 attention on a small set of task-specific tokens (e.g. the `[CLS]` token),
 achieving $$O(n)$$ complexity for document-length inputs while retaining
-most of the expressiveness of full attention. **BigBird** {% cite zaheer2020big --file references %} 
+most of the expressiveness of full attention. **BigBird** {% cite zaheer2020big --file references %}
 extends this with
 random attention on top of the local and global patterns, adding theoretical
 coverage guarantees.
@@ -1018,7 +993,6 @@ the needle-in-a-haystack test expose linear attention's weakness, because
 such tasks rely on attending to a very small number of tokens with high
 sharpness, which the approximation diffuses.
 
-
 ### 6.2 — Multi-Query and Grouped-Query Attention
 
 During inference with the KV cache, memory cost grows linearly with the
@@ -1027,7 +1001,7 @@ $$\mathbf{V}$$ matrices for all past tokens. At long contexts and large
 batch sizes, this dominates total GPU memory usage.
 
 **Multi-Query Attention (MQA)** {% cite shazeer2019multiquery --file references %}
-dramatically reduces this by having all query heads share a *single* key-value
+dramatically reduces this by having all query heads share a _single_ key-value
 head. This cuts KV cache memory by a factor of $$h$$ (the number of query
 heads) at the cost of a modest quality degradation, because each query head
 can no longer attend to information projected into its own private key-value
@@ -1041,13 +1015,12 @@ to balance inference speed against model quality. This is not a theoretical
 curiosity, rather it is an engineering decision that directly determines how many
 users a deployed model can serve per second on a given hardware budget.
 
-
 ### 6.3 — State-Space Models: A Different Paradigm
 
 Perhaps the most significant challenge to attention comes from a completely
 different direction. **Mamba** {% cite gu2023mamba --file references %} is a selective
 state-space model (SSM) that achieves linear-time sequence processing by
-learning to *selectively* retain or forget information at each step. It is a
+learning to _selectively_ retain or forget information at each step. It is a
 learned gating mechanism applied to a fixed-size hidden state. It is
 philosophically reminiscent of an LSTM, but derived from continuous-time
 signal processing theory rather than RNN practice, and implemented with
@@ -1069,15 +1042,14 @@ universally correct, which is why hybrid architectures (Transformer layers
 interleaved with SSM or MLP layers) are among the most actively investigated
 designs today.
 
-
 ---
 
-
 ## Section 7 — Conclusion
+
 {: #section-7}
 
 We began with a single broken sentence and a single broken architecture. The
-sentence was *"The poet published many poems but is still grounded"* a
+sentence was _"The poet published many poems but is still grounded"_ a
 perfectly ordinary construction that exposed the limit of every seq2seq model
 of its era. The architecture was the bottleneck: a single fixed-size vector
 forced to carry the entire meaning of a sequence to the decoder.
@@ -1103,11 +1075,10 @@ maximum. That is exactly the point.
 Aravind Srinivas's observation {% cite srinivas2024mathroots --file references %} was not
 a nostalgic appeal to a pre-AI era. It was a prediction about where
 competitive advantage will live in an AI-accelerated field. The engineers
-who understand *why* a scaled dot product becomes numerically unstable at
-high dimensions, or *why* tiling allows exact attention without writing the
+who understand _why_ a scaled dot product becomes numerically unstable at
+high dimensions, or _why_ tiling allows exact attention without writing the
 full matrix to HBM, will be the ones who see the next limitation before the
 benchmark announces it. The fundamentals do not become obsolete when the
 tools improve rather they become more important.
-
 
 ---
