@@ -1,11 +1,8 @@
 cv:
   name: Shailza Jolly
-  label: Senior ML Scientist / Engineer
   email: shailzajolly@gmail.com
   phone: "+49 176 67279750"
   location: Berlin, Germany
-  image: ""
-  summary: Senior ML Scientist/Engineer with a Ph.D. in CS and 6+ years spanning academic research and industry. Specializes in LLMs, Generative AI, and scalable data pipelines. Brings hands-on depth in modern LLM architectures, efficiency techniques (KV-cache, speculative decoding, FlashAttention), and agentic system design, alongside a track record of top-tier publications (AAAI, NAACL, EMNLP) and production delivery.
 
   social_networks:
     - network: GitHub
@@ -14,22 +11,25 @@ cv:
       username: shailzajolly
 
   sections:
+    Summary:
+      - bullet: Senior ML Scientist/Engineer with a Ph.D. in CS and 6+ years spanning academic research and industry. Specializes in LLMs, Generative AI, and scalable data pipelines. Brings hands-on depth in modern LLM architectures, efficiency techniques (KV-cache, speculative decoding, FlashAttention), and agentic system design, alongside a track record of top-tier publications (AAAI, NAACL, EMNLP) and production delivery.
+
     Education:
       - institution: TU Kaiserslautern
         location: Kaiserslautern, Germany
         area: Computer Science
-        studyType: Ph.D.
+        degree: Ph.D.
         start_date: 2019
         end_date: 2022
-        score: "Sehr Gut 1.0 (highest on 1.0–5.0 scale)"
         highlights:
+          - "Grade: Sehr Gut 1.0 (highest on 1.0–5.0 scale)"
           - "Thesis: Building Natural Language Generation and Understanding Systems in Data-Constrained Settings"
           - Work on VQA, interpretability, and conversational AI
 
       - institution: University of Copenhagen
         location: Copenhagen, Denmark
         area: Natural Language Processing
-        studyType: Visiting Researcher
+        degree: Visiting Researcher
         start_date: 2021-01
         end_date: 2021-03
         highlights:
@@ -38,15 +38,16 @@ cv:
       - institution: TU Kaiserslautern
         location: Kaiserslautern, Germany
         area: Computer Science — Minor in Economics
-        studyType: M.Sc.
+        degree: M.Sc.
         start_date: 2016
         end_date: 2018
-        score: "Sehr Gut 1.5"
+        highlights:
+          - "Grade: Sehr Gut 1.5"
 
       - institution: Kyushu University
         location: Fukuoka, Japan
         area: Computer Science
-        studyType: Semester Abroad
+        degree: Semester Abroad
         start_date: 2017-11
         end_date: 2018-02
         highlights:
@@ -55,10 +56,11 @@ cv:
       - institution: Guru Nanak Dev Engineering College
         location: India
         area: Computer Science & Engineering
-        studyType: B.Tech
+        degree: B.Tech
         start_date: 2012
         end_date: 2016
-        score: "First Division with Distinction"
+        highlights:
+          - "Grade: First Division with Distinction"
 
     Experience:
       - company: Career Break / Independent Study
@@ -138,8 +140,8 @@ cv:
           - Z. X. Zhang
           - A. Dengel
           - L. Mou
-        publisher: AAAI
-        releaseDate: 2022
+        date: "2022"
+        journal: AAAI
         url: https://arxiv.org/abs/2112.02770
 
       - title: "EaSe: A Diagnostic Tool for VQA Based on Answer Diversity"
@@ -147,16 +149,16 @@ cv:
           - Shailza Jolly
           - S. Pezzelle
           - M. Nabi
-        publisher: NAACL-HLT
-        releaseDate: 2021
+        date: "2021"
+        journal: NAACL-HLT
         url: https://www.aclweb.org/anthology/2021.naacl-main.192/
 
       - title: "Can Pre-training Help VQA with Lexical Variations?"
         authors:
           - Shailza Jolly
           - S. Kapoor
-        publisher: Findings of EMNLP
-        releaseDate: 2020
+        date: "2020"
+        journal: Findings of EMNLP
         url: https://www.aclweb.org/anthology/2020.findings-emnlp.257/
 
       - title: "Data-Efficient Paraphrase Generation to Bootstrap Intent Classification and Slot Labeling for New Features in Task-Oriented Dialog Systems"
@@ -165,8 +167,8 @@ cv:
           - T. Falke
           - C. Tirkaz
           - D. Sorokin
-        publisher: COLING (Industry Track)
-        releaseDate: 2020
+        date: "2020"
+        journal: COLING (Industry Track)
         url: https://www.aclweb.org/anthology/2020.coling-industry.2/
 
       - title: "How Do Convolutional Neural Networks Learn Design?"
@@ -175,61 +177,57 @@ cv:
           - B. K. Iwana
           - R. Kuroki
           - S. Uchida
-        publisher: "International Conference on Pattern Recognition (ICPR)"
-        releaseDate: 2018
+        date: "2018"
+        journal: International Conference on Pattern Recognition (ICPR)
         url: https://ieeexplore.ieee.org/abstract/document/8545624
-        summary: "Best Student Paper Award"
+        highlights:
+          - Best Student Paper Award
 
     Awards:
-      - title: AAAI-22 Scholarship by Hitachi
-        awarder: Hitachi
-        date: 2022
-        summary: Awarded scholarship to attend AAAI 2022.
+      - name: AAAI-22 Scholarship by Hitachi
+        date: "2022"
+        highlights:
+          - Awarded by Hitachi to attend AAAI 2022.
 
-      - title: AI Newcomer 2021 Award
-        awarder: German Informatics Society and BMBF, Germany
-        date: 2021
-        summary: Recognized as an AI Newcomer by the German Informatics Society and BMBF.
+      - name: AI Newcomer 2021 Award
+        date: "2021"
+        highlights:
+          - Recognized by the German Informatics Society and BMBF, Germany.
 
-      - title: EU-Cost STSM Grant
-        awarder: EU-Cost Action
-        date: 2020
-        summary: Awarded grant to work on the Multi3generation project at CopeNLU, University of Copenhagen.
+      - name: EU-Cost STSM Grant
+        date: "2020"
+        highlights:
+          - Awarded by EU-Cost Action to work on the Multi3generation project at CopeNLU, University of Copenhagen.
 
-      - title: Best Student Paper Award
-        awarder: International Conference on Pattern Recognition (ICPR)
-        date: 2018
-        summary: Awarded for the paper "How Do Convolutional Neural Networks Learn Design?"
+      - name: Best Student Paper Award
+        date: "2018"
+        highlights:
+          - Awarded by the International Conference on Pattern Recognition (ICPR) for "How Do Convolutional Neural Networks Learn Design?"
 
     Skills:
-      - name: ML/GenAI
-        icon: fa-solid fa-brain
-        keywords: "LLMs, NLU/NLG, multimodal learning, synthetic data, model evaluation"
+      - label: ML/GenAI
+        details: "LLMs, NLU/NLG, multimodal learning, synthetic data, model evaluation"
 
-      - name: LLM Systems
-        icon: fa-solid fa-robot
-        keywords: "Agentic workflows (MCP, LangGraph/LangSmith), RAG, grounding, experiment design, offline evaluation"
+      - label: LLM Systems
+        details: "Agentic workflows (MCP, LangGraph/LangSmith), RAG, grounding, experiment design, offline evaluation"
 
-      - name: Frameworks & Libraries
-        icon: fa-solid fa-code
-        keywords: "Python, PyTorch, Hugging Face (Transformers, PEFT, Datasets), PySpark, Weights & Biases"
+      - label: Frameworks & Libraries
+        details: "Python, PyTorch, Hugging Face (Transformers, PEFT, Datasets), PySpark, Weights & Biases"
 
-      - name: Search & Retrieval
-        icon: fa-solid fa-magnifying-glass
-        keywords: "Sentence Transformers, reranking, vector search, Pinecone, Chroma"
+      - label: Search & Retrieval
+        details: "Sentence Transformers, reranking, vector search, Pinecone, Chroma"
 
-      - name: Infrastructure & Deployment
-        icon: fa-solid fa-server
-        keywords: "AWS, Docker, FastAPI, Git"
+      - label: Infrastructure & Deployment
+        details: "AWS, Docker, FastAPI, Git"
 
     Media Coverage:
       - bullet: "[Interview featured in the Rheinfalz newspaper.](https://tinyurl.com/2t7taz7p)"
       - bullet: "Radio interview for Antenne Kaiserslautern, Germany."
 
     Languages:
-      - name: English
-        summary: "Fluent"
-      - name: German
-        summary: "Beginner"
-      - name: Hindi
-        summary: "Native speaker"
+      - label: English
+        details: Fluent
+      - label: German
+        details: Beginner
+      - label: Hindi
+        details: Native speaker

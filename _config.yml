@@ -4,11 +4,12 @@
 
 title: Shailza Jolly # the website title (if blank, full name will be used instead)
 first_name: Shailza
-middle_name: 
+middle_name:
 last_name: Jolly
 contact_note: >
   You can even add a little note about which of these is the best way to reach you.
-description: ML Scientist | LLMs, Generative AI, Agentic Systems # the ">" symbol means to ignore newlines until "footer_text:"
+description:
+  ML Scientist | LLMs, Generative AI, Agentic Systems # the ">" symbol means to ignore newlines until "footer_text:"
   #A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
@@ -99,8 +100,7 @@ lsi: false # produce an index for related posts
 # Pagination
 pagination:
   enabled: true
-  collection: posts    # ADD THIS
-
+  collection: posts # ADD THIS
 
 related_blog_posts:
   enabled: true
@@ -166,7 +166,7 @@ collections:
     output: true
   teachings:
     output: true
-  stories:          # ADD THIS
+  stories: # ADD THIS
     output: true
     sort_by: date
 
