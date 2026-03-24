@@ -8,18 +8,22 @@
       {% if entry.icon %}
         <i class="{{ entry.icon }}"></i>
       {% endif %}
-      <strong>
-        {{- entry.name -}}
-        {%- if entry.level %} ({{ entry.level }}){% endif %}:</strong
-      >
-      {% if entry.keywords %}
-        {% for keyword in entry.keywords %}
-          {% if forloop.last %}
-            {{ keyword }}
-          {% else %}
-            {{ keyword }},
-          {% endif %}
-        {% endfor %}
+      {% if entry.label %}
+        <strong>{{ entry.label }}:</strong> {{ entry.details }}
+      {% else %}
+        <strong>
+          {{- entry.name -}}
+          {%- if entry.level %} ({{ entry.level }}){% endif %}:</strong
+        >
+        {% if entry.keywords %}
+          {% for keyword in entry.keywords %}
+            {% if forloop.last %}
+              {{ keyword }}
+            {% else %}
+              {{ keyword }},
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       {% endif %}
     </div>
   {% endfor %}
