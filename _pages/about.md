@@ -2,19 +2,19 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Senior ML Scientist | NLP & Generative AI Researcher | Berlin, Germany
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Berlin, Germany</p>
+    <p><a href="mailto:shailzajolly@gmail.com">shailzajolly@gmail.com</a></p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+news: true
+selected_papers: true
+social: true
 
 announcements:
   enabled: true # includes a list of news items
@@ -27,8 +27,12 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hi! My name is **Shailza Jolly**. I am a Senior ML Scientist/Engineer with a Ph.D. in Computer Science and 6+ years spanning academic research and industry, specializing in LLMs, Generative AI, and scalable data pipelines.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I completed my Ph.D. at [TU Kaiserslautern](https://www.uni-kl.de/en/), where I worked with my advisor [Prof. Andreas Dengel](https://www.dfki.de/en/web/about-us/employee/person/ande00/), focusing on developing machine learning methods for building natural language generation and understanding systems in data-constrained settings. My research interests include vision and language systems, interpretability, and conversational AI.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I completed my Master's in Computer Science from [TU Kaiserslautern](https://www.uni-kl.de/en/) and spent a semester abroad at [Kyushu University](https://www.kyushu-u.ac.jp/) in Japan, where my work [How do Convolutional Neural Networks Learn Design?](https://ieeexplore.ieee.org/abstract/document/8545624) won the **Best Student Paper Award** at [ICPR 2018](https://iapr.org/archives/icpr2018/). I completed my Bachelor's from [GNDEC](https://www.gndec.ac.in/), India.
+
+During my studies and career, I have worked at [Amazon AI](https://www.amazon.science/), [NVIDIA Research](https://www.nvidia.com/en-us/research/), [Amazon Alexa](https://www.amazon.jobs/en/landing_pages/amazon-aachen-development-center), [SAP AI Research](https://www.sap.com/trends/machine-learning.html), and the [German Research Center for Artificial Intelligence (DFKI)](https://www.dfki.de/en/web).
+
+I have been a visiting researcher in the labs of [Prof. Seiichi Uchida](https://human.ait.kyushu-u.ac.jp/~uchida/index-e.html), [Prof. Lili Mou](https://lili-mou.github.io/), and [Prof. Isabelle Augenstein](https://isabelleaugenstein.github.io/).
