@@ -11,14 +11,14 @@ thumbnail: assets/img/attention-cover.png
 related_posts: true
 toc:
   sidebar: left
-citation: true
-related_publications: true
+citation: false
+related_publications: false
 ---
 
 Attention is a word interpreted quite differently across communities.
 For a toddler, it signals caution; for an athlete, it means posture
 and sharp focus. But in the ML community, the word immediately conjures
-Transformers {% cite vaswani2017attention --file references %}. What intrigues me is that
+Transformers [Vaswani et al., 2017]. What intrigues me is that
 the word's Latin root _attendere_, meaning _"to stretch toward"_
 maps almost perfectly onto what the mechanism does mathematically: it
 lets a model reach across a sequence and selectively pull in whatever
@@ -33,7 +33,7 @@ in sequence-to-sequence translation all the way to the hardware-aware
 algorithms that power today's large language models.
 
 > **A note on why this blog matters now.**
-> Perplexity AI CEO Aravind Srinivas has [argued](https://www.firstpost.com/tech/perplexity-ceo-believes-ai-could-brings-computer-science-back-to-its-mathematical-roots-13989960.html) {% cite srinivas2024mathroots --file references %}
+> Perplexity AI CEO Aravind Srinivas has [argued](https://www.firstpost.com/tech/perplexity-ceo-believes-ai-could-brings-computer-science-back-to-its-mathematical-roots-13989960.html) [Srinivas, 2024]
 > that AI is not making computer science obsolete. It is driving the
 > field _back_ to its mathematical roots. As AI automates routine coding,
 > competitive advantage shifts toward deep understanding of linear algebra,
@@ -82,8 +82,8 @@ long sequence is exactly what pre-attention architectures struggled with.
 
 The dominant approach for sequence tasks before attention was the
 **sequence-to-sequence (seq2seq)** encoder–decoder architecture
-{% cite sutskever2014seq2seq --file references %}. An encoder, typically an LSTM,
-{% cite hochreiter1997lstm --file references %} or a GRU {% cite cho2014gru --file references %} reads the
+[Sutskever et al., 2014]. An encoder, typically an LSTM,
+[Hochreiter & Schmidhuber, 1997] or a GRU [Cho et al., 2014] reads the
 source sentence token by token and updates a hidden state at each step.
 After the final token, the **last hidden state** $$\mathbf{h}_n$$ is
 handed to the decoder as its initial state, and the decoder generates
@@ -93,15 +93,15 @@ This single vector must compress the _entire meaning_ of the input
 sequence. For short sentences this works adequately. For longer ones,
 it becomes a critical bottleneck: information from early tokens is
 progressively overwritten as later tokens are processed
-{% cite sutskever2014seq2seq --file references %}. In translation benchmarks, this
+[Sutskever et al., 2014]. In translation benchmarks, this
 manifests as a sharp drop in BLEU score for sentences longer than roughly
-20 words {% cite bahdanau2015attention --file references %}.
+20 words [Bahdanau et al., 2015].
 
 The problem is compounded during training. Error gradients must flow
 backward through every recurrent step; for long sequences they either
 shrink toward zero (**vanishing gradients**) or explode, making it
 effectively impossible for the encoder to learn that a word from 30 steps
-ago is still relevant {% cite hochreiter1997lstm --file references %}. LSTMs and GRUs
+ago is still relevant [Hochreiter & Schmidhuber, 1997]. LSTMs and GRUs
 mitigate this with gating mechanisms but do not eliminate the fundamental
 bottleneck: the decoder still receives only $$\mathbf{h}_n$$, regardless
 of how much useful information sits in the intermediate encoder states.
@@ -249,7 +249,7 @@ Combining these: what if the decoder used its current hidden state as a
 and then formed a weighted sum of the encoder states (the **values**)
 proportional to those scores?
 
-That is exactly dot-product attention {% cite bahdanau2015attention --file references %}.
+That is exactly dot-product attention [Bahdanau et al., 2015].
 Instead of receiving a single bottleneck vector, the decoder now receives a
 **context vector** $$\mathbf{c}$$ that is a soft mixture of _all_ encoder
 states, weighted by relevance:
@@ -326,7 +326,7 @@ recovers the correct grammatical subject.
 
 ### Bahdanau's Additive Attention: A Nonlinear Scoring Function
 
-The original attention paper {% cite bahdanau2015attention --file references %} did not use
+The original attention paper [Bahdanau et al., 2015] did not use
 a raw dot product. Bahdanau et al. proposed replacing it with a small
 feedforward network:
 
@@ -407,7 +407,7 @@ distribution; here we see the baseline behavior of the scoring function alone.
 
 {: #section-3}
 
-The insight that led to the Transformer {% cite vaswani2017attention --file references %} was
+The insight that led to the Transformer [Vaswani et al., 2017] was
 deceptively simple: **recurrence is not necessary**. If attention can replace
 the bottleneck vector, can it also replace the sequential encoder?
 
@@ -444,7 +444,7 @@ so the sum of $$d_k$$ elements has variance $$d_k$$. With $$d_k = 64$$
 which pushes softmax into extremely peaked regions where gradients vanish and
 the model stops learning.
 
-The fix {% cite vaswani2017attention --file references %} is to divide scores by
+The fix [Vaswani et al., 2017] is to divide scores by
 $$\sqrt{d_k}$$ before softmax:
 
 $$
@@ -571,7 +571,7 @@ subject-verb dependency in the same subspace as a pronoun-referent
 dependency or a semantic paraphrase relationship. These correspond to
 different geometric structures in the representation space.
 
-Multi-head attention {% cite vaswani2017attention --file references %} runs $$h$$
+Multi-head attention [Vaswani et al., 2017] runs $$h$$
 independent attention functions in parallel on _different projected
 subspaces_ of the input, then concatenates the results:
 
@@ -683,7 +683,7 @@ reads it back to compute the weighted sum. Every read and write to HBM is
 comparatively slow; the GPU's compute cores sit idle waiting for data. The
 attention computation is **memory-bound**, not compute-bound.
 
-Dao et al. {% cite dao2022flashattention --file references %} made a critical observation:
+Dao et al. [Dao et al., 2022] made a critical observation:
 **we never actually need the full $$n \times n$$ matrix**. We only need the
 final output, which is a weighted sum of values. The full matrix is written to
 HBM and then immediately read back which is an enormous round-trip that achieves
@@ -713,7 +713,7 @@ ensuring numerical stability without ever writing the full matrix to HBM.
 The result: FlashAttention computes **exact** attention (no approximation,
 no quality loss) with $$O(n)$$ HBM reads instead of $$O(n^2)$$. In practice
 this yields 2–4× wall-clock speedups and reduces memory from quadratic to
-linear in sequence length {% cite dao2022flashattention --file references %}.
+linear in sequence length [Dao et al., 2022].
 
 ```python
 # ── Cell 6: Flash Attention (block-wise tiled computation) ────────────────────
@@ -777,11 +777,11 @@ tensor([ 0.2277,  0.0004, -0.0246,  0.0077, -0.0187, -0.0030])
 > first dimension (`0.2277`) reflects the dominance of `poet`
 > (embedding `[1, 0, ...]`) in the weighted sum, as expected.
 
-FlashAttention-2 {% cite dao2023flashattention2 --file references %} redesigned the
+FlashAttention-2 [Dao, 2024] redesigned the
 parallelisation strategy for the backward pass, minimised non-matmul FLOPs
 in the rescaling steps, and improved work partitioning across GPU thread
 blocks. This yields roughly 2× the throughput of FlashAttention-1 on A100 GPUs.
-FlashAttention-3 {% cite shah2024flashattention3 --file references %} targets H100
+FlashAttention-3 [Shah et al., 2024] targets H100
 hardware specifically, exploiting its asynchronous memory pipeline to overlap
 data movement with compute and using FP8 arithmetic for the inner matrix
 multiply, pushing throughput toward the theoretical hardware limit.
@@ -971,11 +971,11 @@ Two broad strategies have emerged to attack this:
 
 Sparse attention methods restrict each token to attending only to a
 structured subset of other tokens. **Longformer**
-{% cite beltagy2020longformer --file references %} combines a local sliding-window
+[Beltagy et al., 2020] combines a local sliding-window
 pattern (each token attends to a fixed window of neighbours) with global
 attention on a small set of task-specific tokens (e.g. the `[CLS]` token),
 achieving $$O(n)$$ complexity for document-length inputs while retaining
-most of the expressiveness of full attention. **BigBird** {% cite zaheer2020big --file references %}
+most of the expressiveness of full attention. **BigBird** [Zaheer et al., 2020]
 extends this with
 random attention on top of the local and global patterns, adding theoretical
 coverage guarantees.
@@ -1000,14 +1000,14 @@ number of attention heads: each head stores its own $$\mathbf{K}$$ and
 $$\mathbf{V}$$ matrices for all past tokens. At long contexts and large
 batch sizes, this dominates total GPU memory usage.
 
-**Multi-Query Attention (MQA)** {% cite shazeer2019multiquery --file references %}
+**Multi-Query Attention (MQA)** [Shazeer, 2019]
 dramatically reduces this by having all query heads share a _single_ key-value
 head. This cuts KV cache memory by a factor of $$h$$ (the number of query
 heads) at the cost of a modest quality degradation, because each query head
 can no longer attend to information projected into its own private key-value
 space.
 
-**Grouped-Query Attention (GQA)** {% cite ainslie2023gqa --file references %}
+**Grouped-Query Attention (GQA)** [Ainslie et al., 2023]
 interpolates: query heads are divided into $$g$$ groups, each sharing one
 KV head. With $$g = h$$ this is standard MHA; with $$g = 1$$ this is MQA.
 Models like Llama 3, Mistral, and Gemma use GQA with $$g = 4$$ or $$8$$
@@ -1018,7 +1018,7 @@ users a deployed model can serve per second on a given hardware budget.
 ### 6.3 — State-Space Models: A Different Paradigm
 
 Perhaps the most significant challenge to attention comes from a completely
-different direction. **Mamba** {% cite gu2023mamba --file references %} is a selective
+different direction. **Mamba** [Gu & Dao, 2023] is a selective
 state-space model (SSM) that achieves linear-time sequence processing by
 learning to _selectively_ retain or forget information at each step. It is a
 learned gating mechanism applied to a fixed-size hidden state. It is
@@ -1072,7 +1072,7 @@ and the limitation points toward the next insight. The mathematics at every
 step is not exotic. It is a matrix multiply, a softmax, or a running
 maximum. That is exactly the point.
 
-Aravind Srinivas's observation {% cite srinivas2024mathroots --file references %} was not
+Aravind Srinivas's observation [Srinivas, 2024] was not
 a nostalgic appeal to a pre-AI era. It was a prediction about where
 competitive advantage will live in an AI-accelerated field. The engineers
 who understand _why_ a scaled dot product becomes numerically unstable at
@@ -1082,3 +1082,20 @@ benchmark announces it. The fundamentals do not become obsolete when the
 tools improve rather they become more important.
 
 ---
+
+## References
+
+- Ainslie, J., Lee-Thorp, J., de Jong, M., Zeiler, M., & Sanghai, S. (2023). GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints. _EMNLP 2023_.
+- Bahdanau, D., Cho, K., & Bengio, Y. (2015). Neural Machine Translation by Jointly Learning to Align and Translate. _ICLR 2015_.
+- Beltagy, I., Peters, M. E., & Cohan, A. (2020). Longformer: The Long-Document Transformer. _arXiv:2004.05150_.
+- Cho, K., van Merriënboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., & Bengio, Y. (2014). Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation. _EMNLP 2014_.
+- Dao, T., Fu, D. Y., Ermon, S., Rudra, A., & Ré, C. (2022). FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness. _NeurIPS 2022_.
+- Dao, T. (2024). FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning. _ICLR 2024_.
+- Gu, A., & Dao, T. (2023). Mamba: Linear-Time Sequence Modeling with Selective State Spaces. _arXiv:2312.00752_.
+- Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. _Neural Computation_, 9(8), 1735–1780.
+- Shah, J., Bikshandi, G., Zhang, Y., Diamos, V., Tripuraneni, N., & Dao, T. (2024). FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision. _arXiv:2407.08608_.
+- Shazeer, N. (2019). Fast Transformer Decoding: One Write-Head is All You Need. _arXiv:1911.02150_.
+- Srinivas, A. (2024). Perplexity CEO Believes AI Could Bring Computer Science Back to Its Mathematical Roots. _Firstpost_.
+- Sutskever, I., Vinyals, O., & Le, Q. V. (2014). Sequence to Sequence Learning with Neural Networks. _NeurIPS 2014_.
+- Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is All You Need. _NeurIPS 2017_.
+- Zaheer, M., Guruganesh, G., Dubey, K. A., Ainslie, J., Alberti, C., Ontanon, S., … & Ahmed, A. (2020). Big Bird: Transformers for Longer Sequences. _NeurIPS 2020_.
