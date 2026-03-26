@@ -6,8 +6,7 @@ title: Shailza Jolly # the website title (if blank, full name will be used inste
 first_name: Shailza
 middle_name:
 last_name: Jolly
-contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+contact_note:
 description:
   ML Scientist | LLMs, Generative AI, Agentic Systems # the ">" symbol means to ignore newlines until "footer_text:"
   #A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.

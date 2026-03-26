@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: Senior ML Scientist | NLP & Generative AI Researcher | Berlin, Germany
 
