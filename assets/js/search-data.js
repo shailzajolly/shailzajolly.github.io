@@ -63,7 +63,7 @@ ninja.data = [{
               window.location.href = "/projects/1_project/";
             },},{id: "stories-my-first-story",
           title: 'My First Story',
-          description: "A short description of this story.",
+          description: "Its processing.........",
           section: "Stories",handler: () => {
               window.location.href = "/stories/2026-03-11-my-first-story/";
             },},{id: "teachings-data-science-fundamentals",
