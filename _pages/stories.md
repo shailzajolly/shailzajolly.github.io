@@ -2,7 +2,7 @@
 layout: page
 permalink: /stories/
 title: Stories
-description: Being a silent observer, I notice the quiet details others walk past — this space is where those observations find their words.
+description: Being a silent observer, I notice the quiet details others walk past. This space is where those observations find their words.
 nav: false
 pagination:
   enabled: true
