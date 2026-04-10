@@ -37,7 +37,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/stories/";
               },
-            },{id: "post-understanding-attention-from-the-bottom-up",
+            },{id: "post-data-quality-in-the-age-of-llms-a-comprehensive-survey-of-synthetic-data-generation",
+        
+          title: "Data Quality in the Age of LLMs: A Comprehensive Survey of Synthetic Data...",
+        
+        description: "A survey-style blog post covering definitions, risks, current research, and open challenges in data quality for large language model training and fine-tuning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/data-quality-llms/";
+          
+        },
+      },{id: "post-understanding-attention-from-the-bottom-up",
         
           title: "Understanding Attention from the Bottom Up",
         
