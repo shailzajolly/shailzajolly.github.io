@@ -37,7 +37,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/stories/";
               },
-            },{id: "post-data-quality-in-the-age-of-llms-a-comprehensive-survey-of-synthetic-data-generation",
+            },{id: "post-from-generative-ai-to-agentic-systems-how-we-got-here-and-where-we-are-in-2026",
+        
+          title: "From Generative AI to Agentic Systems: How We Got Here and Where We...",
+        
+        description: "A technical walkthrough of the ideas, inflection points, and open challenges that carried AI from static text generators to autonomous agents, from ChatGPT&#39;s launch in 2022 to the agentic stacks of 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-genai-to-agentic-ai/";
+          
+        },
+      },{id: "post-data-quality-in-the-age-of-llms-a-comprehensive-survey-of-synthetic-data-generation",
         
           title: "Data Quality in the Age of LLMs: A Comprehensive Survey of Synthetic Data...",
         
