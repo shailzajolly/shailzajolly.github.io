@@ -5,6 +5,7 @@ date: 2026-04-10 00:00:00
 description: "A survey-style blog post covering definitions, risks, current research, and open challenges in data quality for large language model training and fine-tuning."
 tags: [data-quality, llms, synthetic-data, machine-learning, nlp]
 categories: research
+thumbnail: assets/img/data_quality.png
 toc:
   sidebar: left
 math: true

@@ -8,6 +8,7 @@ description: >
   ChatGPT's launch in 2022 to the agentic stacks of 2026.
 tags: [llm, agents, rag, mcp, reasoning, agentic-ai, generative-ai]
 categories: research
+thumbnail: assets/img/genai_agenai.png
 toc:
   sidebar: left
 math: true
