@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Senior ML Scientist | NLP & Generative AI Researcher | Berlin, Germany
+subtitle: Working at the intersection of science, engineering &amp; product | PhD · ex-Amazon · ex-NVIDIA | Berlin, Germany
 
 profile:
   align: right
@@ -27,7 +27,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi! My name is **Shailza Jolly**. I am a Senior ML Scientist/Engineer with a Ph.D. in Computer Science and 6+ years spanning academic research and industry, specializing in LLMs, Generative AI, and scalable data pipelines.
+Hi! My name is **Shailza Jolly**. I am an ML Scientist/Engineer with a Ph.D. in Computer Science and 6+ years spanning academic research and industry, specializing in LLMs, Generative AI, and scalable data pipelines.
 
 I completed my Ph.D. at [TU Kaiserslautern](https://www.uni-kl.de/en/), where I worked with my advisor [Prof. Andreas Dengel](https://www.dfki.de/en/web/about-us/employee/person/ande00/), focusing on developing machine learning methods for building natural language generation and understanding systems in data-constrained settings. My research interests include vision and language systems, interpretability, and conversational AI.
 
@@ -36,3 +36,7 @@ I completed my Master's in Computer Science from [TU Kaiserslautern](https://www
 During my studies and career, I have worked at [Amazon AI](https://www.amazon.science/), [NVIDIA Research](https://www.nvidia.com/en-us/research/), [Amazon Alexa](https://www.amazon.jobs/en/landing_pages/amazon-aachen-development-center), [SAP AI Research](https://www.sap.com/trends/machine-learning.html), and the [German Research Center for Artificial Intelligence (DFKI)](https://www.dfki.de/en/web).
 
 I have been a visiting researcher in the labs of [Prof. Seiichi Uchida](https://human.ait.kyushu-u.ac.jp/~uchida/index-e.html), [Prof. Lili Mou](https://lili-mou.github.io/), and [Prof. Isabelle Augenstein](https://isabelleaugenstein.github.io/).
+
+Over the past year I've been building and experimenting independently: refreshing my modern LLM foundations, going deep on agentic systems and retrieval, and shipping hands-on prototypes.
+
+I'm now looking for my next role at the intersection of science, engineering, and product, somewhere I can take ambiguous problems from research all the way to systems that real users rely on. My research background lets me get up to speed on hard problems quickly, my engineering work means I write the code and ship it, and I'm at my best translating between technical and business goals, mapping product KPIs to the metrics that move them. I'm open to strong roles, and equally to building something of my own.

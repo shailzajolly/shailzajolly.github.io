@@ -12,65 +12,17 @@ cv:
 
   sections:
     Summary:
-      - bullet: Senior ML Scientist/Engineer with a Ph.D. in CS and 6+ years spanning academic research and industry. Specializes in LLMs, Generative AI, and scalable data pipelines. Brings hands-on depth in modern LLM architectures, efficiency techniques (KV-cache, speculative decoding, FlashAttention), and agentic system design, alongside a track record of top-tier publications (AAAI, NAACL, EMNLP) and production delivery.
-
-    Education:
-      - institution: TU Kaiserslautern
-        location: Kaiserslautern, Germany
-        area: Computer Science
-        degree: Ph.D.
-        start_date: 2019
-        end_date: 2022
-        highlights:
-          - "Grade: Sehr Gut 1.0 (highest on 1.0–5.0 scale)"
-          - "Thesis: Building Natural Language Generation and Understanding Systems in Data-Constrained Settings"
-          - Work on VQA, interpretability, and conversational AI
-
-      - institution: University of Copenhagen
-        location: Copenhagen, Denmark
-        area: Natural Language Processing
-        degree: Visiting Researcher
-        start_date: 2021-01
-        end_date: 2021-03
-        highlights:
-          - Developed an unsupervised post-editing algorithm to generate fluent fact-checking explanations
-
-      - institution: TU Kaiserslautern
-        location: Kaiserslautern, Germany
-        area: Computer Science — Minor in Economics
-        degree: M.Sc.
-        start_date: 2016
-        end_date: 2018
-        highlights:
-          - "Grade: Sehr Gut 1.5"
-
-      - institution: Kyushu University
-        location: Fukuoka, Japan
-        area: Computer Science
-        degree: Semester Abroad
-        start_date: 2017-11
-        end_date: 2018-02
-        highlights:
-          - Explainable AI to analyze behavior of deep CNN architectures for image recognition
-
-      - institution: Guru Nanak Dev Engineering College
-        location: India
-        area: Computer Science & Engineering
-        degree: B.Tech
-        start_date: 2012
-        end_date: 2016
-        highlights:
-          - "Grade: First Division with Distinction"
+      - bullet: ML Scientist/Engineer with a Ph.D. in CS and 6+ years spanning academic research and industry, working at the intersection of science, engineering, and product. Specializes in LLMs, Generative AI, and scalable data pipelines, with hands-on depth in modern LLM architectures, efficiency techniques (KV-cache, speculative decoding, FlashAttention), and agentic system design. Pairs a track record of top-tier publications (AAAI, NAACL, EMNLP) with shipping production systems and translating technical work into clear business outcomes.
 
     Experience:
-      - company: Career Break / Independent Study
-        position: Generative AI & LLM Systems
+      - company: Independent
+        position: Applied AI & LLM Systems
         location: Berlin, Germany
         start_date: 2025-07
         end_date: present
         highlights:
-          - Deepened expertise in modern LLM architectures and efficiency — FlashAttention, RoPE, scaling laws, KV-cache, speculative decoding, and fast inference techniques.
-          - Studied agentic system design (tool use, MCP) and evaluation strategies for LLM/agentic systems; built small prototypes to test concepts.
+          - Worked hands-on at the intersection of science, engineering, and product, building and iterating on a series of prototypes across agentic systems, retrieval, and LLM evaluation to keep my engineering sharp while exploring directions worth committing to.
+          - Refreshed modern LLM foundations (Stanford) and went deep on architecture and efficiency internals (KV-cache, speculative decoding, FlashAttention). One example is [Sift](https://github.com/shailzajolly/Sift), an agentic RAG system that returns grounded, citable answers over a corpus of technical PDFs.
 
       - company: Flinn.ai
         position: Senior AI Engineer
@@ -80,7 +32,6 @@ cv:
         highlights:
           - Led development of AI-driven product features including data extraction from medical research papers and multilingual complaint monitoring.
           - Partnered with product and backend teams to scope problems, define success metrics, and deliver end-to-end features within an agile product lifecycle.
-          - Role eliminated due to company-wide strategic shift.
 
       - company: Parental Leave (Maternity)
         position: ""
@@ -132,6 +83,70 @@ cv:
         end_date: 2019-02
         highlights:
           - Designed and implemented an evaluation metric for Visual Question Answering (VQA) models.
+
+    Skills:
+      - label: ML/GenAI
+        details: "LLMs, NLU/NLG, multimodal learning, synthetic data, model evaluation"
+
+      - label: LLM Systems
+        details: "Agentic workflows (MCP, LangGraph/LangSmith), RAG, grounding, experiment design, offline evaluation"
+
+      - label: Frameworks & Libraries
+        details: "Python, PyTorch, Hugging Face (Transformers, PEFT, Datasets), PySpark, Weights & Biases"
+
+      - label: Search & Retrieval
+        details: "Sentence Transformers, reranking, vector search, Pinecone, Chroma"
+
+      - label: Infrastructure & Deployment
+        details: "AWS, Docker, FastAPI, Git"
+
+    Education:
+      - institution: TU Kaiserslautern
+        location: Kaiserslautern, Germany
+        area: Computer Science
+        degree: Ph.D.
+        start_date: 2019
+        end_date: 2022
+        highlights:
+          - "Grade: Sehr Gut 1.0 (highest on 1.0–5.0 scale)"
+          - "Thesis: Building Natural Language Generation and Understanding Systems in Data-Constrained Settings"
+          - Work on VQA, interpretability, and conversational AI
+
+      - institution: University of Copenhagen
+        location: Copenhagen, Denmark
+        area: Natural Language Processing
+        degree: Visiting Researcher
+        start_date: 2021-01
+        end_date: 2021-03
+        highlights:
+          - Developed an unsupervised post-editing algorithm to generate fluent fact-checking explanations
+
+      - institution: TU Kaiserslautern
+        location: Kaiserslautern, Germany
+        area: Computer Science — Minor in Economics
+        degree: M.Sc.
+        start_date: 2016
+        end_date: 2018
+        highlights:
+          - "Grade: Sehr Gut 1.5"
+
+      - institution: Kyushu University
+        location: Fukuoka, Japan
+        area: Computer Science
+        degree: Semester Abroad
+        start_date: 2017-11
+        end_date: 2018-02
+        highlights:
+          - Explainable AI to analyze behavior of deep CNN architectures for image recognition
+
+      - institution: Guru Nanak Dev Engineering College
+        location: India
+        area: Computer Science & Engineering
+        degree: B.Tech
+        start_date: 2012
+        end_date: 2016
+        highlights:
+          - "Grade: First Division with Distinction"
 
     Selected Publications:
       - title: "Search and Learn: Improving Semantic Coverage for Data-to-Text Generation"
@@ -203,22 +218,6 @@ cv:
         date: "2018"
         highlights:
           - Awarded by the International Conference on Pattern Recognition (ICPR) for "How Do Convolutional Neural Networks Learn Design?"
-
-    Skills:
-      - label: ML/GenAI
-        details: "LLMs, NLU/NLG, multimodal learning, synthetic data, model evaluation"
-
-      - label: LLM Systems
-        details: "Agentic workflows (MCP, LangGraph/LangSmith), RAG, grounding, experiment design, offline evaluation"
-
-      - label: Frameworks & Libraries
-        details: "Python, PyTorch, Hugging Face (Transformers, PEFT, Datasets), PySpark, Weights & Biases"
-
-      - label: Search & Retrieval
-        details: "Sentence Transformers, reranking, vector search, Pinecone, Chroma"
-
-      - label: Infrastructure & Deployment
-        details: "AWS, Docker, FastAPI, Git"
 
     Media Coverage:
       - bullet: "[Interview featured in the Rheinfalz newspaper.](https://tinyurl.com/2t7taz7p)"

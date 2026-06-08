@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2026-03-11
+date: 2026-05-01
 inline: true
 ---
 
-Started independent study on Generative AI & LLM Systems, Berlin.
+After a year of independent building and experimenting in agentic AI and LLM systems, I'm exploring what's next at the intersection of research, engineering, and product, open to strong roles and to building something of my own.
