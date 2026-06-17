@@ -39,4 +39,5 @@ I have been a visiting researcher in the labs of [Prof. Seiichi Uchida](https://
 
 Over the past year I've been building and experimenting independently: refreshing my modern LLM foundations, going deep on agentic systems and retrieval, and shipping hands-on prototypes.
 
-I'm now looking for my next role at the intersection of science, engineering, and product, somewhere I can take ambiguous problems from research all the way to systems that real users rely on. My research background lets me get up to speed on hard problems quickly, my engineering work means I write the code and ship it, and I'm at my best translating between technical and business goals, mapping product KPIs to the metrics that move them. I'm open to strong roles, and equally to building something of my own.
+I'm exploring venture opportunities in GenAI and agentic systems. My research background lets me get up to speed on hard problems quickly, my engineering work means I write the code and ship it, and I'm at my best translating between technical and business goals, mapping product KPIs to the metrics that move them. I'm open to exceptional roles where I can take hard problems from research all the way to real users.
+
