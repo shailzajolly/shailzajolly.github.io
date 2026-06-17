@@ -21,7 +21,7 @@ cv:
         start_date: 2025-07
         end_date: present
         highlights:
-          - Working hands-on at the intersection of science, engineering, and product, building and iterating on a series of prototypes across agentic systems, retrieval, and LLM evaluation to keep my engineering sharp while exploring directions worth committing to.
+          - Working hands-on at the intersection of science, engineering, and product, building and iterating on a series of prototypes across agentic systems, retrieval, and LLM evaluation while exploring directions worth committing to.
           - Refreshed modern LLM foundations (Stanford) and went deep on architecture and efficiency internals (KV-cache, speculative decoding, FlashAttention). One example is [Sift](https://github.com/shailzajolly/Sift), an agentic RAG system that returns grounded, citable answers over a corpus of technical PDFs.
 
       - company: Flinn.ai
