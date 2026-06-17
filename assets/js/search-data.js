@@ -75,7 +75,7 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-after-a-year-of-independent-building-and-experimenting-in-agentic-ai-and-llm-systems-i-m-exploring-what-s-next-at-the-intersection-of-research-engineering-and-product-open-to-strong-roles-and-to-building-something-of-my-own",
+            },},{id: "news-after-a-year-of-independent-building-and-experimenting-in-agentic-ai-and-llm-systems-i-m-exploring-what-s-next-at-the-intersection-of-research-engineering-and-product-open-to-exceptional-roles-where-i-can-take-hard-problems-from-research-all-the-way-to-real-users",
           title: 'After a year of independent building and experimenting in agentic AI and LLM...',
           description: "",
           section: "News",},{id: "projects-project-1",
