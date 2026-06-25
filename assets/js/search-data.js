@@ -70,34 +70,14 @@ ninja.data = [{
             window.location.href = "/blog/2025/attention/";
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "news-after-a-year-of-independent-building-and-experimenting-in-agentic-ai-and-llm-systems-i-m-exploring-what-s-next-at-the-intersection-of-research-engineering-and-product-open-to-exceptional-roles-where-i-can-take-hard-problems-from-research-all-the-way-to-real-users",
+      },{id: "news-after-a-year-of-independent-building-and-experimenting-in-agentic-ai-and-llm-systems-i-m-exploring-what-s-next-at-the-intersection-of-research-engineering-and-product-open-to-exceptional-roles-where-i-can-take-hard-problems-from-research-all-the-way-to-real-users",
           title: 'After a year of independent building and experimenting in agentic AI and LLM...',
           description: "",
-          section: "News",},{id: "projects-project-1",
-          title: 'project 1',
-          description: "with background image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_project/";
-            },},{id: "stories-my-first-story",
+          section: "News",},{id: "stories-my-first-story",
           title: 'My First Story',
           description: "Its processing.........",
           section: "Stories",handler: () => {
               window.location.href = "/stories/2026-03-11-my-first-story/";
-            },},{id: "teachings-data-science-fundamentals",
-          title: 'Data Science Fundamentals',
-          description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
-          section: "Teachings",handler: () => {
-              window.location.href = "/teachings/data-science-fundamentals/";
-            },},{id: "teachings-introduction-to-machine-learning",
-          title: 'Introduction to Machine Learning',
-          description: "This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.",
-          section: "Teachings",handler: () => {
-              window.location.href = "/teachings/introduction-to-machine-learning/";
             },},{
         id: 'social-cv',
         title: 'CV',
