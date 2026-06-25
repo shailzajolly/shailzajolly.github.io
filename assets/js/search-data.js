@@ -23,6 +23,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-projects",
+          title: "projects",
+          description: "Shipped while exploring.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
         },{id: "nav-cv",
           title: "CV",
           description: "",
@@ -70,10 +77,15 @@ ninja.data = [{
             window.location.href = "/blog/2025/attention/";
           
         },
-      },{id: "news-after-a-year-of-independent-building-and-experimenting-in-agentic-ai-and-llm-systems-i-m-exploring-what-s-next-at-the-intersection-of-research-engineering-and-product-open-to-exceptional-roles-where-i-can-take-hard-problems-from-research-all-the-way-to-real-users",
-          title: 'After a year of independent building and experimenting in agentic AI and LLM...',
+      },{id: "news-in-founder-mode-mapped-what-existed-found-the-gaps-and-built-what-i-needed-a-personal-ai-learning-tool-i-ve-used-daily-for-months-exploring-ai-native-opportunities-for-european-markets-if-you-re-building-in-genai-let-s-talk",
+          title: 'In founder-mode: mapped what existed, found the gaps, and built what I needed;...',
           description: "",
-          section: "News",},{id: "stories-my-first-story",
+          section: "News",},{id: "projects-sift",
+          title: 'Sift',
+          description: "Agentic retrieval for technical documentation. Pairs BM25 with semantic search to handle dense specs, part numbers, and product codes that break naive vector search. Every answer carries a provenance trail back to the source.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sift/";
+            },},{id: "stories-my-first-story",
           title: 'My First Story',
           description: "Its processing.........",
           section: "Stories",handler: () => {
