@@ -21,8 +21,8 @@ cv:
         start_date: 2025-07
         end_date: present
         highlights:
-          - Explored problem spaces in LLM evaluation, enterprise AI, and agentic systems by building working prototypes: [Sift](https://github.com/shailzajolly/Sift), a hybrid retrieval system for technical documentation, and a personal AI learning tool built after finding the gap in existing apps.
-          - Deepened LLM architecture fundamentals (Stanford) including efficiency internals: KV-cache, speculative decoding, FlashAttention.
+          - "Exploring problem spaces in LLM evaluation, enterprise AI, and agentic systems by building working prototypes: [Sift](https://github.com/shailzajolly/Sift), a hybrid retrieval system for technical documentation, and a personal AI learning tool built after finding the gap in existing apps."
+          - "Deepened LLM architecture fundamentals (Stanford) including efficiency internals: KV-cache, speculative decoding, FlashAttention."
 
       - company: Flinn.ai
         position: Senior AI Engineer
@@ -34,8 +34,8 @@ cv:
           - Partnered with product and backend teams to scope problems, define success metrics, and deliver end-to-end features within an agile product lifecycle.
           - Navigated cost-performance tradeoffs under production constraints and learned to translate between engineers, product managers, and domain experts who each speak a fundamentally different language.
 
-      - company: Parental Leave (Maternity)
-        position: ""
+      - company: Maternity
+        position: Parental Leave
         location: Berlin, Germany
         start_date: 2023-12
         end_date: 2024-12
