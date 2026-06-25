@@ -12,7 +12,7 @@ cv:
 
   sections:
     Summary:
-      - bullet: ML Scientist/Engineer with a Ph.D. in CS and 6+ years spanning academic research and industry, working at the intersection of science, engineering, and product. Specializes in LLMs, Generative AI, and scalable data pipelines, with hands-on depth in modern LLM architectures, efficiency techniques (KV-cache, speculative decoding, FlashAttention), and agentic system design. Pairs a track record of top-tier publications (AAAI, NAACL, EMNLP) with shipping production systems and translating technical work into clear business outcomes.
+      - bullet: Builder and researcher with a Ph.D. in CS and 6+ years spanning academic research and industry, working at the intersection of science, engineering, and product. Specializes in LLMs, Generative AI, and scalable data pipelines, with hands-on depth in modern LLM architectures, efficiency techniques (KV-cache, speculative decoding, FlashAttention), and agentic system design. Pairs a track record of top-tier publications (AAAI, NAACL, EMNLP) with shipping production systems and translating technical work into clear business outcomes.
 
     Experience:
       - company: Independent
@@ -21,8 +21,8 @@ cv:
         start_date: 2025-07
         end_date: present
         highlights:
-          - Working hands-on at the intersection of science, engineering, and product, building and iterating on a series of prototypes across agentic systems, retrieval, and LLM evaluation while exploring directions worth committing to.
-          - Refreshed modern LLM foundations (Stanford) and went deep on architecture and efficiency internals (KV-cache, speculative decoding, FlashAttention). One example is [Sift](https://github.com/shailzajolly/Sift), an agentic RAG system that returns grounded, citable answers over a corpus of technical PDFs.
+          - Explored problem spaces in LLM evaluation, enterprise AI, and agentic systems by building working prototypes: [Sift](https://github.com/shailzajolly/Sift), a hybrid retrieval system for technical documentation, and a personal AI learning tool built after finding the gap in existing apps.
+          - Deepened LLM architecture fundamentals (Stanford) including efficiency internals: KV-cache, speculative decoding, FlashAttention.
 
       - company: Flinn.ai
         position: Senior AI Engineer
@@ -32,6 +32,7 @@ cv:
         highlights:
           - Led development of AI-driven product features including data extraction from medical research papers and multilingual complaint monitoring.
           - Partnered with product and backend teams to scope problems, define success metrics, and deliver end-to-end features within an agile product lifecycle.
+          - Navigated cost-performance tradeoffs under production constraints and learned to translate between engineers, product managers, and domain experts who each speak a fundamentally different language.
 
       - company: Parental Leave (Maternity)
         position: ""
@@ -39,7 +40,7 @@ cv:
         start_date: 2023-12
         end_date: 2024-12
         highlights:
-          - Stayed engaged with research literature and maintained technical skills.
+          - Watched a human brain acquire language and reasoning from nothing; the most grounding perspective on what AI is actually trying to replicate.
 
       - company: Amazon AI
         position: Research Scientist
@@ -48,8 +49,7 @@ cv:
         end_date: 2023-11
         highlights:
           - Led development of a scalable noise-removal/data-quality pipeline processing billions of tokens to improve training data for LLMs.
-          - Wrote research plans and technical documentation; presented results and recommendations to senior science/engineering leadership.
-          - Mentored Master's/Ph.D. interns and collaborated on research deliverables.
+          - Presented findings and recommendations to senior science and engineering leadership; mentored Master's and Ph.D. interns on research deliverables.
 
       - company: German Research Center for Artificial Intelligence (DFKI)
         position: Machine Learning Scientist
@@ -57,8 +57,8 @@ cv:
         start_date: 2019-03
         end_date: 2022-06
         highlights:
-          - Delivered ML research and engineering in BMBF-funded projects XAINES (Explainable AI) and DeFuseNN (vision-language systems).
-          - Supervised interns and BSc/MSc students; provided technical mentorship and project guidance.
+          - Implemented transformer-based ML systems end-to-end (GPU training, Docker, production-level code) within BMBF-funded projects; published results at AAAI, NAACL, and EMNLP.
+          - Collaborated with academic and industry partners internationally; supervised interns and BSc/MSc students.
 
       - company: NVIDIA Research
         position: Machine Learning Scientist Intern
@@ -110,7 +110,6 @@ cv:
         highlights:
           - "Grade: Sehr Gut 1.0 (highest on 1.0–5.0 scale)"
           - "Thesis: Building Natural Language Generation and Understanding Systems in Data-Constrained Settings"
-          - Work on VQA, interpretability, and conversational AI
 
       - institution: University of Copenhagen
         location: Copenhagen, Denmark
@@ -201,8 +200,6 @@ cv:
     Awards:
       - name: AAAI-22 Scholarship by Hitachi
         date: "2022"
-        highlights:
-          - Awarded by Hitachi to attend AAAI 2022.
 
       - name: AI Newcomer 2021 Award
         date: "2021"
@@ -227,6 +224,6 @@ cv:
       - label: English
         details: Fluent
       - label: German
-        details: Beginner
+        details: A2 (actively learning)
       - label: Hindi
         details: Native speaker

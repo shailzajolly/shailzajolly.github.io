@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Working at the intersection of science, engineering &amp; product | PhD · ex-Amazon · ex-NVIDIA | Berlin, Germany
+subtitle: Building in GenAI &amp; Agentic Systems | PhD · ex-Amazon · ex-NVIDIA | Berlin, Germany
 
 profile:
   align: right
@@ -31,7 +31,7 @@ Hi! My name is **Shailza Jolly**. I am an ML Scientist/Engineer with a Ph.D. in 
 
 I completed my Ph.D. at [TU Kaiserslautern](https://www.uni-kl.de/en/), where I worked with my advisor [Prof. Andreas Dengel](https://www.dfki.de/en/web/about-us/employee/person/ande00/), focusing on developing machine learning methods for building natural language generation and understanding systems in data-constrained settings. My research interests include vision and language systems, interpretability, and conversational AI.
 
-I completed my Master's in Computer Science from [TU Kaiserslautern](https://www.uni-kl.de/en/) and spent a semester abroad at [Kyushu University](https://www.kyushu-u.ac.jp/) in Japan, where my work [How do Convolutional Neural Networks Learn Design?](https://ieeexplore.ieee.org/abstract/document/8545624) won the **Best Student Paper Award** at [ICPR 2018](https://iapr.org/archives/icpr2018/). I completed my Bachelor's from [GNDEC](https://www.gndec.ac.in/), India.
+I completed my Master's in Computer Science from [TU Kaiserslautern](https://www.uni-kl.de/en/) and spent a semester abroad at [Kyushu University](https://www.kyushu-u.ac.jp/) in Japan, where my work [How do Convolutional Neural Networks Learn Design?](https://ieeexplore.ieee.org/abstract/document/8545624) won the **Best Student Paper Award** at [ICPR 2018](https://iapr.org/archives/icpr2018/). I was also named **AI Newcomer of the Year 2021** by the [German Informatics Society](https://gi.de/en/) and BMBF. I completed my Bachelor's from [GNDEC](https://www.gndec.ac.in/), India.
 
 During my studies and career, I have worked at [Amazon AI](https://www.amazon.science/), [NVIDIA Research](https://www.nvidia.com/en-us/research/), [Amazon Alexa](https://www.amazon.jobs/en/landing_pages/amazon-aachen-development-center), [SAP AI Research](https://www.sap.com/trends/machine-learning.html), and the [German Research Center for Artificial Intelligence (DFKI)](https://www.dfki.de/en/web).
 
@@ -39,5 +39,5 @@ I have been a visiting researcher in the labs of [Prof. Seiichi Uchida](https://
 
 Over the past year I've been building and experimenting independently: refreshing my modern LLM foundations, going deep on agentic systems and retrieval, and shipping hands-on prototypes.
 
-I'm exploring venture opportunities in GenAI and agentic systems. My research background lets me get up to speed on hard problems quickly, my engineering work means I write the code and ship it, and I'm at my best translating between technical and business goals, mapping product KPIs to the metrics that move them. I'm open to exceptional roles where I can take hard problems from research all the way to real users.
+I'm exploring venture opportunities in GenAI and agentic systems. My research background lets me get up to speed on hard problems quickly, my engineering work means I write the code and ship it, and I'm at my best translating between technical and business goals, mapping product KPIs to the metrics that move them.
 
