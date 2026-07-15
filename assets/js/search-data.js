@@ -25,7 +25,7 @@ ninja.data = [{
           },
         },{id: "nav-projects",
           title: "projects",
-          description: "Shipped while exploring.",
+          description: "Things I&#39;ve built.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -77,8 +77,8 @@ ninja.data = [{
             window.location.href = "/blog/2025/attention/";
           
         },
-      },{id: "news-in-founder-mode-mapped-what-existed-found-the-gaps-and-built-what-i-needed-a-personal-ai-learning-tool-i-ve-used-daily-for-months-exploring-ai-native-opportunities-for-european-markets-if-you-re-building-in-genai-let-s-talk",
-          title: 'In founder-mode: mapped what existed, found the gaps, and built what I needed;...',
+      },{id: "news-open-to-new-roles-i-m-looking-for-an-ml-scientist-ai-engineer-position-in-germany-or-remote-within-the-eu-recent-work-includes-sift-an-open-source-hybrid-retrieval-system-that-returns-grounded-citable-answers-over-technical-documentation-get-in-touch",
+          title: 'Open to new roles. I’m looking for an ML Scientist / AI Engineer...',
           description: "",
           section: "News",},{id: "projects-sift",
           title: 'Sift',
