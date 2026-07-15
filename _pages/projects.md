@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Shipped while exploring.
+description: Things I've built.
 nav: true
 nav_order: 3
 display_categories: [work, fun]

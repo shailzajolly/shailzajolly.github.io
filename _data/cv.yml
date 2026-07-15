@@ -12,7 +12,7 @@ cv:
 
   sections:
     Summary:
-      - bullet: Builder and researcher with a Ph.D. in CS and 6+ years spanning academic research and industry, working at the intersection of science, engineering, and product. Specializes in LLMs, Generative AI, and scalable data pipelines, with hands-on depth in modern LLM architectures, efficiency techniques (KV-cache, speculative decoding, FlashAttention), and agentic system design. Pairs a track record of top-tier publications (AAAI, NAACL, EMNLP) with shipping production systems and translating technical work into clear business outcomes.
+      - bullet: ML Scientist / AI Engineer with a Ph.D. in Computer Science and 6+ years across industry research and product, focused on making LLM systems accurate and auditable enough to trust. Led a data-quality pipeline over billions of tokens of LLM training data at Amazon AI; built LLM-powered product features for a platform serving medical device manufacturers at Flinn.ai; open-sourced Sift, a hybrid BM25 and dense retrieval system whose agent answers only from retrieved passages, with a source and page citation on every claim. Working depth in modern LLM internals and inference efficiency (KV-cache, speculative decoding, FlashAttention) and in agentic system design (MCP, persistent memory, tool orchestration). Publications at AAAI, NAACL, and EMNLP.
 
     Experience:
       - company: Independent
@@ -21,8 +21,10 @@ cv:
         start_date: 2025-07
         end_date: present
         highlights:
-          - "Exploring problem spaces in LLM evaluation, enterprise AI, and agentic systems by building working prototypes: [Sift](https://github.com/shailzajolly/Sift), a hybrid retrieval system for technical documentation, and a personal AI learning tool built after finding the gap in existing apps."
-          - "Deepened LLM architecture fundamentals (Stanford) including efficiency internals: KV-cache, speculative decoding, FlashAttention."
+          - "Built and open-sourced [Sift](https://github.com/shailzajolly/Sift): grounded question-answering over technical PDF corpora. Docling chunking, hybrid BM25 and dense (Chroma) retrieval, cross-encoder reranking, served over MCP to an agent that answers only from retrieved passages, with a source and page citation on every claim."
+          - "Built an agentic tutoring system in daily use: an LLM agent orchestrating retrieval over a structured knowledge base, persistent memory of errors and progress, adaptive lesson selection that targets weak areas, and voice I/O (faster-whisper ASR, edge-tts TTS)."
+          - "Published technical writing on LLM internals and systems: attention mechanisms, data quality for LLM training, and the shift from generative to agentic AI."
+          - "Deepened modern LLM architecture and inference-efficiency internals through Stanford coursework: KV-cache, speculative decoding, FlashAttention."
 
       - company: Flinn.ai
         position: Senior AI Engineer
@@ -30,17 +32,15 @@ cv:
         start_date: 2025-01
         end_date: 2025-06
         highlights:
-          - Led development of AI-driven product features including data extraction from medical research papers and multilingual complaint monitoring.
-          - Partnered with product and backend teams to scope problems, define success metrics, and deliver end-to-end features within an agile product lifecycle.
-          - Navigated cost-performance tradeoffs under production constraints and learned to translate between engineers, product managers, and domain experts who each speak a fundamentally different language.
+          - Led development of LLM-powered product features for a platform serving medical device manufacturers, including data extraction from medical research papers and multilingual complaint monitoring.
+          - Partnered with product and backend teams to scope problems, define success metrics, and deliver features end to end.
+          - Navigated cost-performance tradeoffs under production constraints.
 
-      - company: Maternity
-        position: Parental Leave
+      - company: Parental Leave
+        position: Career break
         location: Berlin, Germany
         start_date: 2023-12
         end_date: 2024-12
-        highlights:
-          - Watched a human brain acquire language and reasoning from nothing; the most grounding perspective on what AI is actually trying to replicate.
 
       - company: Amazon AI
         position: Research Scientist
@@ -86,16 +86,19 @@ cv:
 
     Skills:
       - label: ML/GenAI
-        details: "LLMs, NLU/NLG, multimodal learning, synthetic data, model evaluation"
+        details: "LLMs, NLU/NLG, multimodal learning, synthetic data, model evaluation, model training and fine-tuning (T5, BERT)"
 
       - label: LLM Systems
-        details: "Agentic workflows (MCP, LangGraph/LangSmith), RAG, grounding, experiment design, offline evaluation"
-
-      - label: Frameworks & Libraries
-        details: "Python, PyTorch, Hugging Face (Transformers, PEFT, Datasets), PySpark, Weights & Biases"
+        details: "Agentic workflows (MCP, LangGraph/LangSmith), Retrieval-Augmented Generation (RAG), grounding and citations, persistent agent memory, experiment design, offline evaluation"
 
       - label: Search & Retrieval
-        details: "Sentence Transformers, reranking, vector search, Pinecone, Chroma"
+        details: "Hybrid retrieval (BM25 + dense), cross-encoder reranking, vector search (Chroma, Pinecone), Sentence Transformers, Docling"
+
+      - label: LLM Internals & Efficiency
+        details: "KV-cache, speculative decoding, FlashAttention"
+
+      - label: Frameworks & Libraries
+        details: "Python, PyTorch, Hugging Face (Transformers, Datasets), PySpark, Weights & Biases"
 
       - label: Infrastructure & Deployment
         details: "AWS, Docker, FastAPI, Git"

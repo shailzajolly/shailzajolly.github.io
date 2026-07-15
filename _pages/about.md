@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Building in GenAI &amp; Agentic Systems | PhD · ex-Amazon · ex-NVIDIA | Berlin, Germany
+subtitle: ML Scientist / AI Engineer | LLMs, Retrieval &amp; Agentic Systems | PhD · ex-Amazon · ex-NVIDIA | Berlin, Germany
 
 profile:
   align: right
@@ -27,7 +27,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi! My name is **Shailza Jolly**. I am an ML Scientist/Engineer with a Ph.D. in Computer Science and 6+ years spanning academic research and industry, specializing in LLMs, Generative AI, and scalable data pipelines.
+Hi! My name is **Shailza Jolly**. I am an ML Scientist / AI Engineer with a Ph.D. in Computer Science and 6+ years spanning academic research and industry. My work centres on making LLM systems accurate and auditable enough to trust: retrieval and grounding, agentic systems, and training-data quality at scale.
 
 I completed my Ph.D. at [TU Kaiserslautern](https://www.uni-kl.de/en/), where I worked with my advisor [Prof. Andreas Dengel](https://www.dfki.de/en/web/about-us/employee/person/ande00/), focusing on developing machine learning methods for building natural language generation and understanding systems in data-constrained settings. My research interests include vision and language systems, interpretability, and conversational AI.
 
@@ -37,7 +37,6 @@ During my studies and career, I have worked at [Amazon AI](https://www.amazon.sc
 
 I have been a visiting researcher in the labs of [Prof. Seiichi Uchida](https://human.ait.kyushu-u.ac.jp/~uchida/index-e.html), [Prof. Lili Mou](https://lili-mou.github.io/), and [Prof. Isabelle Augenstein](https://isabelleaugenstein.github.io/).
 
-Over the past year I've been building and experimenting independently: refreshing my modern LLM foundations, going deep on agentic systems and retrieval, and shipping hands-on prototypes.
+Over the past year I've been building independently, going deep on the parts of the modern LLM stack that matter most for reliability: retrieval and grounding, agentic system design, and inference efficiency. [Sift](https://github.com/shailzajolly/Sift) is the clearest example, an open-source hybrid retrieval system whose agent answers only from retrieved passages and cites the source page for every claim. I also built an agentic tutoring system with persistent memory and voice that I use daily, and wrote about attention, data quality for LLM training, and the shift from generative to agentic AI.
 
-I'm exploring venture opportunities in GenAI and agentic systems. My research background lets me get up to speed on hard problems quickly, my engineering work means I write the code and ship it, and I'm at my best translating between technical and business goals, mapping product KPIs to the metrics that move them.
-
+I'm now looking for my next full-time role as an **ML Scientist / AI Engineer**, in Germany or remote within the EU. My research background lets me get up to speed on hard problems quickly, my engineering work means I write the code and ship it, and I'm at my best translating between technical and business goals, mapping product KPIs to the metrics that move them.

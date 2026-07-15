@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2026-05-01
+date: 2026-07-14
 inline: true
 ---
 
-In founder-mode: mapped what existed, found the gaps, and built what I needed; a personal AI learning tool I've used daily for months. Exploring AI-native opportunities for European markets. If you're building in GenAI, let's talk.
+Open to new roles. I'm looking for an ML Scientist / AI Engineer position, in Germany or remote within the EU. Recent work includes [Sift](https://github.com/shailzajolly/Sift), an open-source hybrid retrieval system that returns grounded, citable answers over technical documentation. Get in touch.
